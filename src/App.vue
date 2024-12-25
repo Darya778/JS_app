@@ -1,18 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Notes App</h1>
+      <note-form @add-note="addNote" />
+      <note-list :notes="notes" />
+    </div>
+  </section>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NoteForm from './components/NoteForm.vue';
+import NoteList from './components/NoteList.vue';
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    NoteForm,
+    NoteList,
+  },
+  data() {
+    return {
+      notes: [],
+    };
+  },
+  methods: {
+    addNote(note) {
+      this.notes.push(note);
+    },
+  },
+};
 </script>
+
 
 <style>
 #app {
